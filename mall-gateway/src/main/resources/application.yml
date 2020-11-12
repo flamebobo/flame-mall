@@ -9,18 +9,18 @@ spring:
     # nacos注册中心
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8800
+        server-addr: 127.0.0.1:8848
         namespace: loc
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lower-case-service-id: true #使用小写service-id
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true #使用小写service-id
 
 #nacos配置中心
 nacos:
   config:
-    server-addr: 127.0.0.1:8800
+    server-addr: 127.0.0.1:8848
     namespace: loc
 
 
