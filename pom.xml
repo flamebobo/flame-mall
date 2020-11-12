@@ -21,6 +21,7 @@
 <!--        <module>mall-monitor</module>-->
 <!--        <module>mall-gateway</module>-->
 <!--        <module>mall-config</module>-->
+        <module>mall-gateway</module>
     </modules>
 
     <parent>
@@ -57,6 +58,8 @@
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
+        <nacos-config-spring-boot.version>0.2.3</nacos-config-spring-boot.version>
+        <spring-cloud-starter-alibaba-nacos.version>2.2.0.RELEASE</spring-cloud-starter-alibaba-nacos.version>
     </properties>
 
     <dependencies>
@@ -72,6 +75,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${spring-cloud-starter-alibaba-nacos.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>${nacos-config-spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>${spring-cloud-starter-alibaba-nacos.version}</version>
         </dependency>
     </dependencies>
 
