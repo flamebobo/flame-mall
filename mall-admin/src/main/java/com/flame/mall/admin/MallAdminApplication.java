@@ -1,4 +1,4 @@
-package com.flame.mall.gateway;
+package com.flame.mall.admin;
 
 import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.boot.SpringApplication;
