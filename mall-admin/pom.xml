@@ -16,6 +16,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+        <!--mall通用模块-->
+        <dependency>
+            <groupId>com.flame.mall</groupId>
+            <artifactId>mall-common</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
