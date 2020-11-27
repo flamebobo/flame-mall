@@ -24,9 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "UmsAdminController", description = "后台用户管理")
 @RestController("/admin")
 public class UmsAdminController {
-    private UmsAdmin
     public CommonResult<UmsAdmin> register(@RequestBody UmsAdmin umsAdmin){
-
+        return null;
 
     }
 }

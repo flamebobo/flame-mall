@@ -1,8 +1,8 @@
 package com.flame.mall.security.config;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "secure.ignored")
+@NacosConfigurationProperties(prefix = "secure.ignored", dataId = "mall-common.yaml")
 public class IgnoreUrlsConfig {
 
     private List<String> urls = new ArrayList<>();

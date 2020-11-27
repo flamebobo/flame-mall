@@ -24,7 +24,6 @@ import java.io.IOException;
  * @author: Flame.Lai
  * @time: 2020/11/24 10:21
  */
-@Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {

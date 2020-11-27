@@ -2,13 +2,18 @@ package com.flame.mall.admin.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.flame.mall.admin.bo.AdminUserDetails;
 import com.flame.mall.admin.dao.UmsAdminRoleRelationDao;
+import com.flame.mall.admin.dto.UmsAdminParam;
+import com.flame.mall.admin.dto.UpdateAdminPasswordParam;
 import com.flame.mall.admin.enums.AccountEnum;
 import com.flame.mall.admin.service.UmsAdminService;
 import com.flame.mall.mbg.mapper.UmsAdminMapper;
 import com.flame.mall.mbg.model.UmsAdmin;
 import com.flame.mall.mbg.model.UmsAdminExample;
 import com.flame.mall.mbg.model.UmsPermission;
+import com.flame.mall.mbg.model.UmsResource;
+import com.flame.mall.mbg.model.UmsRole;
 import com.flame.mall.security.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +24,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,31 +44,34 @@ import java.util.List;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class UmsAdminServiceImpl implements UmsAdminService {
 
-
-    private final UmsAdminMapper umsAdminMapper;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private UmsAdminMapper umsAdminMapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     @NacosValue("${jwt.tokenHead}")
     private String tokenHead;
-    private final UserDetailsService userDetailsService;
-    private final UmsAdminRoleRelationDao adminRoleRelationDao;
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private UmsAdminRoleRelationDao adminRoleRelationDao;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
-        List<UmsAdmin> adminList = umsAdminMapper.selectByExample(example);
-        if (adminList!=null && adminList.size() > 0) {
-            return adminList.get(0);
-        }
+//        List<UmsAdmin> adminList = umsAdminMapper.selectByExample(example);
+//        if (adminList!=null && adminList.size() > 0) {
+//            return adminList.get(0);
+//        }
         return null;
     }
 
     @Override
-    public UmsAdmin register(UmsAdmin umsAdminParam) {
+    public UmsAdmin register(UmsAdminParam umsAdminParam) {
         UmsAdmin umsAdmin = new UmsAdmin();
         BeanUtil.copyProperties(umsAdminParam, umsAdmin);
         umsAdmin.setCreateTime(new Date());
@@ -70,14 +79,14 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         // 查询是否有相同用户名的用户
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
-        List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
-        if (umsAdminList.size() > 0) {
-            return null;
-        }
+//        List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
+//        if (umsAdminList.size() > 0) {
+//            return null;
+//        }
         // 将密码进行加密操作
         String encodePassword = passwordEncoder.encode(umsAdminParam.getPassword());
         umsAdmin.setPassword(encodePassword);
-        umsAdminMapper.insert(umsAdmin);
+//        umsAdminMapper.insert(umsAdmin);
         return umsAdmin;
     }
 
@@ -85,7 +94,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public String login(String username, String password) {
         String token = null;
         try {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = loadUserByUsername(username);
             if (!passwordEncoder.matches(password, userDetails.getPassword())) {
                 throw new BadCredentialsException("密码不正确！");
             }
@@ -99,7 +108,70 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
+    public String refreshToken(String oldToken) {
+        return null;
+    }
+
+    @Override
+    public UmsAdmin getItem(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum) {
+        return null;
+    }
+
+    @Override
+    public int update(Long id, UmsAdmin admin) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Long id) {
+        return 0;
+    }
+
+    @Override
+    public int updateRole(Long adminId, List<Long> roleIds) {
+        return 0;
+    }
+
+    @Override
+    public List<UmsRole> getRoleList(Long adminId) {
+        return null;
+    }
+
+    @Override
+    public List<UmsResource> getResourceList(Long adminId) {
+        return null;
+    }
+
+    @Override
+    public int updatePermission(Long adminId, List<Long> permissionIds) {
+        return 0;
+    }
+
+    @Override
     public List<UmsPermission> getPermissionList(Long adminId) {
         return adminRoleRelationDao.getPermissionList(adminId);
     }
+
+    @Override
+    public int updatePassword(UpdateAdminPasswordParam updatePasswordParam) {
+        return 0;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        //获取用户信息
+        UmsAdmin admin = getAdminByUsername(username);
+        if (admin != null) {
+            List<UmsResource> resourceList = getResourceList(admin.getId());
+            return new AdminUserDetails(admin,resourceList);
+        }
+        throw new UsernameNotFoundException("用户名或密码错误");
+    }
+
+
 }

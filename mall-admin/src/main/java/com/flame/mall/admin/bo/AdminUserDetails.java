@@ -1,6 +1,7 @@
 package com.flame.mall.admin.bo;
 
 import com.flame.mall.mbg.model.UmsAdmin;
+import com.flame.mall.mbg.model.UmsPermission;
 import com.flame.mall.mbg.model.UmsResource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

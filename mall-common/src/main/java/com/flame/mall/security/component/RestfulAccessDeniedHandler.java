@@ -23,7 +23,6 @@ import java.io.IOException;
  * @author: Flame.Lai
  * @time: 2020/11/24 0:18
  */
-@Component
 public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request,
