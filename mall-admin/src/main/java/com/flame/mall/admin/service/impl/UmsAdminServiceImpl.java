@@ -63,10 +63,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public UmsAdmin getAdminByUsername(String username) {
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
-//        List<UmsAdmin> adminList = umsAdminMapper.selectByExample(example);
-//        if (adminList!=null && adminList.size() > 0) {
-//            return adminList.get(0);
-//        }
+        List<UmsAdmin> adminList = umsAdminMapper.selectByExample(example);
+        if (adminList!=null && adminList.size() > 0) {
+            return adminList.get(0);
+        }
         return null;
     }
 
@@ -79,10 +79,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         // 查询是否有相同用户名的用户
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
-//        List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
-//        if (umsAdminList.size() > 0) {
-//            return null;
-//        }
+        List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
+        if (umsAdminList.size() > 0) {
+            return null;
+        }
         // 将密码进行加密操作
         String encodePassword = passwordEncoder.encode(umsAdminParam.getPassword());
         umsAdmin.setPassword(encodePassword);
