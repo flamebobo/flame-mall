@@ -3,6 +3,7 @@ package com.flame.mall.security.config;
 import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-@NacosConfigurationProperties(prefix = "secure.ignored", dataId = "mall-common.yaml")
+@ConfigurationProperties(prefix = "secure.ignored")
 public class IgnoreUrlsConfig {
 
     private List<String> urls = new ArrayList<>();
