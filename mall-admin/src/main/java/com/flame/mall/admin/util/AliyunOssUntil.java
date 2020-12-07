@@ -20,15 +20,15 @@ import java.io.File;
  */
 public class AliyunOssUntil {
 
-    public static final String endpoint = "oss-cn-beijing.aliyuncs.com";
-    public static final String accessKeyId = "LTAI4G8NRovxHydVvEFuomFE";
-    public static final String accessKeySecret = "QOlmj3kvIfhodczLaulGDDOhKm8KB8";
-    public static final String bucketName = "flame-oss";
+    public static final String ENDPOINT = "oss-cn-beijing.aliyuncs.com";
+    public static final String ACCESS_KEY_ID = "LTAI4G8NRovxHydVvEFuomFE";
+    public static final String ACCESS_KEY_SECRET = "QOlmj3kvIfhodczLaulGDDOhKm8KB8";
+    public static final String BUCKET_NAME = "flame-oss";
 
-    public static OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+    public static OSS ossClient = new OSSClientBuilder().build(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 
     public static void main(String[] args) {
-        ossClient.putObject(bucketName, "1.png", new File("C:\\Users\\admin\\Desktop\\1.png"));
+        ossClient.putObject(BUCKET_NAME, "1.png", new File("C:\\Users\\admin\\Desktop\\1.png"));
         ossClient.shutdown();
         System.out.println("上传图片完成！");
     }
