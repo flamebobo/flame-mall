@@ -18,7 +18,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@NacosPropertySource(dataId = "gateway.yaml" ,autoRefreshed = true)
+//@NacosPropertySource(dataId = "gateway.yaml", autoRefreshed = true)
 public class MallGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(MallGatewayApplication.class, args);

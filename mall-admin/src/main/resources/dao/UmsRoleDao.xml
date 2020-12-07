@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flame.mall.admin.dao.UmsRoleDao">
+    <select id="getMenuList" resultType="com.flame.mall.mbg.model.UmsMenu">
+        select m.id, m.parent_id, m.create_time, m.title, m.level, m.sort, m.name, m.icon, m.hidden from ums_menu m left join  ums_role_menu_relation rmr on m.id = rmr.menu_id left join ums_admin_role_relation arr on  rmr.role_id = arr.role_id where arr.admin_id = #{adminId}
+    </select>
+</mapper>

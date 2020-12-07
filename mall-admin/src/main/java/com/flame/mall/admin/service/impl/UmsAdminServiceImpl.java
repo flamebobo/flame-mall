@@ -144,7 +144,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsResource> getResourceList(Long adminId) {
-        return null;
+        return adminRoleRelationDao.getResourceList(adminId);
     }
 
     @Override

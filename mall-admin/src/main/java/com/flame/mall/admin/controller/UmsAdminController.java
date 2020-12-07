@@ -2,6 +2,7 @@ package com.flame.mall.admin.controller;
 
 import com.flame.mall.admin.dto.UmsAdminLoginParam;
 import com.flame.mall.admin.service.UmsAdminService;
+import com.flame.mall.admin.service.UmsRoleService;
 import com.flame.mall.mbg.model.UmsAdmin;
 import com.flame.mall.util.CommonResult;
 import io.swagger.annotations.Api;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +45,8 @@ public class UmsAdminController {
     private String tokenHead;
     @Autowired
     private UmsAdminService adminService;
+    @Autowired
+    private UmsRoleService roleService;
 
     @ApiOperation(value = "登录以后返回token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -56,5 +60,21 @@ public class UmsAdminController {
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
+    }
+    @ApiOperation(value = "获取当前登录用户信息")
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult getAdminInfo(Principal principal) {
+        if(principal==null){
+            return CommonResult.unauthorized(null);
+        }
+        String username = principal.getName();
+        UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
+        Map<String, Object> data = new HashMap<>();
+        data.put("username", umsAdmin.getUsername());
+        data.put("roles", new String[]{"TEST"});
+        data.put("menus", roleService.getMenuList(umsAdmin.getId()));
+        data.put("icon", umsAdmin.getIcon());
+        return CommonResult.success(data);
     }
 }

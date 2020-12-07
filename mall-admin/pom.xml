@@ -2,15 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>mall</artifactId>
-        <groupId>com.flame.mall</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.flame.mall</groupId>
     <artifactId>mall-admin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
+    <name>mall-admin</name>
+    <description>mall-admin project for mall</description>
+
+    <parent>
+        <groupId>com.flame.mall</groupId>
+        <artifactId>mall</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <dependencies>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
@@ -26,6 +32,20 @@
         <dependency>
             <groupId>com.flame.mall</groupId>
             <artifactId>mall-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.aliyun.oss</groupId>-->
+<!--            <artifactId>aliyun-sdk-oss</artifactId>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.5.0</version>
         </dependency>
     </dependencies>
 
