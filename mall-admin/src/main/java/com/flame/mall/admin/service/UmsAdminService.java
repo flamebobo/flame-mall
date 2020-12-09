@@ -6,10 +6,13 @@ import com.flame.mall.mbg.model.UmsAdmin;
 import com.flame.mall.mbg.model.UmsPermission;
 import com.flame.mall.mbg.model.UmsResource;
 import com.flame.mall.mbg.model.UmsRole;
+import com.flame.mall.util.CommonResult;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Title:</p>
@@ -39,7 +42,7 @@ public interface UmsAdminService {
      * @param password 密码
      * @return 生成的JWT的token
      */
-    String login(String username,String password);
+    CommonResult login(String username, String password);
 
     /**
      * 刷新token的功能
@@ -70,8 +73,7 @@ public interface UmsAdminService {
     /**
      * 修改用户角色关系
      */
-    @Transactional
-    int updateRole(Long adminId, List<Long> roleIds);
+    CommonResult updateRole(Long adminId, List<Long> roleIds);
 
     /**
      * 获取用户对于角色
@@ -86,7 +88,6 @@ public interface UmsAdminService {
     /**
      * 修改用户的+-权限
      */
-    @Transactional
     int updatePermission(Long adminId, List<Long> permissionIds);
 
     /**
@@ -96,11 +97,17 @@ public interface UmsAdminService {
 
     /**
      * 修改密码
+     * @return
      */
-    int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
+    CommonResult updatePassword(UpdateAdminPasswordParam updatePasswordParam);
 
     /**
      * 获取用户信息
      */
     UserDetails loadUserByUsername(String username);
+
+    /**
+     * 获取用户信息
+     */
+    CommonResult getAdminInfo(Principal principal);
 }

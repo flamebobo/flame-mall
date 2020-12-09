@@ -2,10 +2,13 @@ package com.flame.mall.admin.service.impl;
 
 import com.flame.mall.admin.dao.UmsRoleDao;
 import com.flame.mall.admin.service.UmsRoleService;
+import com.flame.mall.mbg.mapper.UmsRoleMapper;
 import com.flame.mall.mbg.model.UmsMenu;
 import com.flame.mall.mbg.model.UmsPermission;
 import com.flame.mall.mbg.model.UmsResource;
 import com.flame.mall.mbg.model.UmsRole;
+import com.flame.mall.mbg.model.UmsRoleExample;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +26,11 @@ import java.util.List;
  * @time: 2020/12/3 17:14
  */
 @Service
+@RequiredArgsConstructor
 public class UmsRoleServiceImpl implements UmsRoleService {
 
-    @Autowired
-    private UmsRoleDao roleDao;
+    private final UmsRoleDao roleDao;
+    private final UmsRoleMapper roleMapper;
 
     @Override
     public int create(UmsRole role) {
@@ -55,7 +59,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
 
     @Override
     public List<UmsRole> list() {
-        return null;
+        return roleMapper.selectByExample(new UmsRoleExample());
     }
 
     @Override

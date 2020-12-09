@@ -15,11 +15,10 @@
         where ar.admin_id = #{adminId}
     </select>
     <select id="getRolePermissionList" resultMap="com.flame.mall.mbg.mapper.UmsPermissionMapper.BaseResultMap">
-        select p.*
-        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
-            left join ums_role_permission_relation rp on r.id = rp.role_id
-            left join ums_permission p on rp.permission_id=p.id
-            where ar.admin_id = #{adminId} and p.id is not null
+       select p.* from ums_permission p
+       left join ums_role_permission_relation rpr on p.id = rpr.permission_id
+       left join ums_admin_role_relation arr on rpr.role_id = arr.role_id
+       where arr.admin_id = #{adminId} and p.id is not null
     </select>
     <select id="getPermissionList" resultMap="com.flame.mall.mbg.mapper.UmsPermissionMapper.BaseResultMap">
         SELECT
