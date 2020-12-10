@@ -2,6 +2,7 @@ package com.flame.mall.admin.service;
 
 import com.flame.mall.admin.dto.PmsBrandParam;
 import com.flame.mall.mbg.model.PmsBrand;
+import com.flame.mall.util.CommonResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -26,23 +27,23 @@ public interface PmsBrandService {
     /**
      * 创建品牌
      */
-    int createBrand(PmsBrandParam pmsBrandParam);
+    CommonResult createBrand(PmsBrandParam pmsBrandParam);
 
     /**
      * 修改品牌
      */
-    @Transactional
-    int updateBrand(Long id, PmsBrandParam pmsBrandParam);
+
+    CommonResult updateBrand(Long id, PmsBrandParam pmsBrandParam);
 
     /**
      * 删除品牌
      */
-    int deleteBrand(Long id);
+    CommonResult deleteBrand(Long id);
 
     /**
      * 批量删除品牌
      */
-    int deleteBrand(List<Long> ids);
+    CommonResult deleteBrand(List<Long> ids);
 
     /**
      * 分页查询品牌
@@ -57,10 +58,10 @@ public interface PmsBrandService {
     /**
      * 修改显示状态
      */
-    int updateShowStatus(List<Long> ids, Integer showStatus);
+    CommonResult updateShowStatus(List<Long> ids, Integer showStatus);
 
     /**
      * 修改厂家制造商状态
      */
-    int updateFactoryStatus(List<Long> ids, Integer factoryStatus);
+    CommonResult updateFactoryStatus(List<Long> ids, Integer factoryStatus);
 }
