@@ -116,6 +116,7 @@
   <sql id="Blob_Column_List">
     description, detail_desc, detail_html, detail_mobile_html
   </sql>
+
   <select id="selectByExampleWithBLOBs" parameterType="com.flame.mall.mbg.model.PmsProductExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
@@ -132,6 +133,7 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectByExample" parameterType="com.flame.mall.mbg.model.PmsProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -146,6 +148,7 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
@@ -154,16 +157,19 @@
     from pms_product
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from pms_product
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <delete id="deleteByExample" parameterType="com.flame.mall.mbg.model.PmsProductExample">
     delete from pms_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
   <insert id="insert" parameterType="com.flame.mall.mbg.model.PmsProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
@@ -197,6 +203,7 @@
       #{productCategoryName,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, 
       #{detailHtml,jdbcType=LONGVARCHAR}, #{detailMobileHtml,jdbcType=LONGVARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.flame.mall.mbg.model.PmsProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
@@ -453,12 +460,14 @@
       </if>
     </trim>
   </insert>
+
   <select id="countByExample" parameterType="com.flame.mall.mbg.model.PmsProductExample" resultType="java.lang.Long">
     select count(*) from pms_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product
     <set>
@@ -593,6 +602,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_product
     set id = #{record.id,jdbcType=BIGINT},
@@ -641,6 +651,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
   <update id="updateByExample" parameterType="map">
     update pms_product
     set id = #{record.id,jdbcType=BIGINT},
@@ -685,6 +696,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.flame.mall.mbg.model.PmsProduct">
     update pms_product
     <set>
@@ -814,6 +826,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
+
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.flame.mall.mbg.model.PmsProduct">
     update pms_product
     set brand_id = #{brandId,jdbcType=BIGINT},
@@ -859,6 +872,7 @@
       detail_mobile_html = #{detailMobileHtml,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.flame.mall.mbg.model.PmsProduct">
     update pms_product
     set brand_id = #{brandId,jdbcType=BIGINT},
@@ -900,4 +914,5 @@
       product_category_name = #{productCategoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
 </mapper>

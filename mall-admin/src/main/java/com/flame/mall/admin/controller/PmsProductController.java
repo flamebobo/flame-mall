@@ -1,5 +1,6 @@
 package com.flame.mall.admin.controller;
 
+import com.flame.mall.admin.dto.PmsProductParam;
 import com.flame.mall.admin.dto.PmsProductQueryParam;
 import com.flame.mall.admin.service.PmsProductService;
 import com.flame.mall.mbg.model.PmsProduct;
@@ -9,11 +10,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -46,5 +48,13 @@ public class PmsProductController {
                                                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
         List<PmsProduct> pmsProducts = pmsProductService.list(pmsProductQueryParam, pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(pmsProducts));
+    }
+
+    @ApiOperation("创建商品")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestBody PmsProductParam productParam) {
+        return  pmsProductService.create(productParam);
+
     }
 }
