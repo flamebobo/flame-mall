@@ -12,7 +12,7 @@
         </el-col>
         <el-col :span="6">
           <div class="out-border">
-            <div class="layout-title">前端项目</div>
+            <div class="layout-title">后端项目</div>
             <div class="color-main address-content">
               <a href="https://github.com/macrozheng/mall-admin-web">mall-admin-web</a>
             </div>
@@ -63,7 +63,7 @@
     </div>
     <el-card class="mine-layout">
       <div style="text-align: center">
-        <img width="150px" height="150px" src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg">
+        <img width="150px" height="150px" src="http://flame-oss.oss-cn-beijing.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg">
       </div>
       <div style="text-align: center">mall全套学习教程连载中！</div>
       <div style="text-align: center;margin-top: 5px"><span class="color-main">关注公号</span>，第一时间获取。</div>
