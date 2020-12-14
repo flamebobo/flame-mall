@@ -4,6 +4,7 @@ import com.flame.mall.admin.dao.CmsPrefrenceAreaProductRelationDao;
 import com.flame.mall.admin.dao.CmsSubjectProductRelationDao;
 import com.flame.mall.admin.dao.PmsMemberPriceDao;
 import com.flame.mall.admin.dao.PmsProductAttributeValueDao;
+import com.flame.mall.admin.dao.PmsProductDao;
 import com.flame.mall.admin.dao.PmsProductFullReductionDao;
 import com.flame.mall.admin.dao.PmsProductLadderDao;
 import com.flame.mall.admin.dao.PmsSkuStockDao;
@@ -52,6 +53,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     private final PmsProductAttributeValueDao productAttributeValueDao;
     private final CmsSubjectProductRelationDao subjectProductRelationDao;
     private final CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
+    private final PmsProductDao productDao;
 
     @Override
     public List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
@@ -155,7 +157,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 
     @Override
     public PmsProductResult getUpdateInfo(Long id) {
-        return null;
+        return productDao.getUpdateInfo(id);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.flame.mall.admin.controller;
 
 import com.flame.mall.admin.dto.PmsProductParam;
 import com.flame.mall.admin.dto.PmsProductQueryParam;
+import com.flame.mall.admin.dto.PmsProductResult;
 import com.flame.mall.admin.service.PmsProductService;
 import com.flame.mall.mbg.model.PmsProduct;
 import com.flame.mall.util.CommonPage;
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,5 +58,13 @@ public class PmsProductController {
     public CommonResult create(@RequestBody PmsProductParam productParam) {
         return  pmsProductService.create(productParam);
 
+    }
+
+    @ApiOperation("根据商品id获取商品编辑信息")
+    @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsProductResult> getUpdateInfo(@PathVariable Long id) {
+        PmsProductResult productResult = pmsProductService.getUpdateInfo(id);
+        return CommonResult.success(productResult);
     }
 }
