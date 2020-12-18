@@ -32,7 +32,6 @@ public interface PmsProductAttributeService {
     /**
      * 添加商品属性
      */
-    @Transactional
     int create(PmsProductAttributeParam pmsProductAttributeParam);
 
     /**
