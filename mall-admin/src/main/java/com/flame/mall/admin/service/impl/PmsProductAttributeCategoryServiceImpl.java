@@ -37,9 +37,6 @@ public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttribu
         return productAttributeCategoryMapper.insertSelective(productAttributeCategory);
     }
 
-
-
-
     @Override
     public int update(Long id, String name) {
         PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
