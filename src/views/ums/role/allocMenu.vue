@@ -17,6 +17,9 @@
   </el-card>
 </template>
 
+
+
+
 <script>
   import {fetchTreeList} from '@/api/menu';
   import {listMenuByRole,allocMenu} from '@/api/role';
