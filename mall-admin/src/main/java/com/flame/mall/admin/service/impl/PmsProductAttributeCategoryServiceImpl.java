@@ -1,5 +1,6 @@
 package com.flame.mall.admin.service.impl;
 
+import com.flame.mall.admin.dao.PmsProductAttributeCategoryDao;
 import com.flame.mall.admin.dto.PmsProductAttributeCategoryItem;
 import com.flame.mall.admin.service.PmsProductAttributeCategoryService;
 import com.flame.mall.mbg.mapper.PmsProductAttributeCategoryMapper;
@@ -27,25 +28,31 @@ import java.util.List;
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {
 
     private final PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
+    private final PmsProductAttributeCategoryDao productAttributeCategoryDao;
 
     @Override
     public int create(String name) {
-        return 0;
+        PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
+        productAttributeCategory.setName(name);
+        return productAttributeCategoryMapper.insertSelective(productAttributeCategory);
     }
 
     @Override
     public int update(Long id, String name) {
-        return 0;
+        PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
+        productAttributeCategory.setName(name);
+        productAttributeCategory.setId(id);
+        return productAttributeCategoryMapper.updateByPrimaryKeySelective(productAttributeCategory);
     }
 
     @Override
     public int delete(Long id) {
-        return 0;
+        return productAttributeCategoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public PmsProductAttributeCategory getItem(Long id) {
-        return null;
+        return productAttributeCategoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -56,6 +63,6 @@ public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttribu
 
     @Override
     public List<PmsProductAttributeCategoryItem> getListWithAttr() {
-        return null;
+        return productAttributeCategoryDao.getListWithAttr();
     }
 }

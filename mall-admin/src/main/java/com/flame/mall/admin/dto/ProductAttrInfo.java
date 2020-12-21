@@ -1,5 +1,7 @@
 package com.flame.mall.admin.dto;
 
+import lombok.Data;
+
 /**
  * <p>Title:</p>
  * <p>Description:</p>
@@ -11,6 +13,7 @@ package com.flame.mall.admin.dto;
  * @author: Flame.Lai
  * @time: 2020/12/11 16:00
  */
+@Data
 public class ProductAttrInfo {
 
     private Long attributeId;
