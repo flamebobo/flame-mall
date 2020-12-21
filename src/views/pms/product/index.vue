@@ -585,6 +585,7 @@
       },
       handleShowProduct(index,row){
         console.log("handleShowProduct",row);
+        this.$router.push({path:'/pms/updateProduct',query:{id:row.id}});
       },
       handleShowVerifyDetail(index,row){
         console.log("handleShowVerifyDetail",row);

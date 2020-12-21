@@ -14,6 +14,9 @@
           </el-dropdown-item>
         </router-link>
         <el-dropdown-item divided>
+          <span @click="personalCenter" style="display:block;">个人中心</span>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
           <span @click="logout" style="display:block;">退出</span>
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -45,6 +48,9 @@ export default {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+    },
+    personalCenter(){
+      alert("个人中心");
     }
   }
 }

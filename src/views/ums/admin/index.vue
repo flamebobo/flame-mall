@@ -48,6 +48,9 @@
         <el-table-column label="邮箱" align="center">
           <template slot-scope="scope">{{scope.row.email}}</template>
         </el-table-column>
+        <el-table-column label="头像" align="icon" width="100">
+          <template slot-scope="scope"><img style="height: 80px" :src="scope.row.icon"></template>
+        </el-table-column>
         <el-table-column label="添加时间" width="160" align="center">
           <template slot-scope="scope">{{scope.row.createTime | formatDateTime}}</template>
         </el-table-column>
@@ -114,6 +117,9 @@
         <el-form-item label="密码：">
           <el-input v-model="admin.password"  type="password" style="width: 250px"></el-input>
         </el-form-item>
+        <el-form-item label="头像：">
+          <single-upload v-model="admin.icon"></single-upload>
+        </el-form-item>
         <el-form-item label="备注：">
           <el-input v-model="admin.note"
                     type="textarea"
@@ -155,6 +161,7 @@
   import {fetchList,createAdmin,updateAdmin,updateStatus,deleteAdmin,getRoleByAdmin,allocRole} from '@/api/login';
   import {fetchAllRoleList} from '@/api/role';
   import {formatDate} from '@/utils/date';
+  import SingleUpload from '@/components/Upload/singleUpload'
 
   const defaultListQuery = {
     pageNum: 1,
@@ -167,6 +174,7 @@
     password: null,
     nickName: null,
     email: null,
+    icon: '',
     note: null,
     status: 1
   };
