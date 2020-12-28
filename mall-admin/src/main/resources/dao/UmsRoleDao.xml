@@ -4,4 +4,13 @@
     <select id="getMenuList" resultType="com.flame.mall.mbg.model.UmsMenu">
         select m.id, m.parent_id, m.create_time, m.title, m.level, m.sort, m.name, m.icon, m.hidden from ums_menu m left join  ums_role_menu_relation rmr on m.id = rmr.menu_id left join ums_admin_role_relation arr on  rmr.role_id = arr.role_id where arr.admin_id = #{adminId}
     </select>
+
+    <select id="getMenuListByRoleId" resultType="com.flame.mall.mbg.model.UmsMenu">
+        select m.id, m.parent_id, m.create_time, m.title, m.level, m.sort, m.name, m.icon, m.hidden from ums_menu m left join ums_role_menu_relation rmr on m.id = rmr.menu_id  where rmr.role_id = #{roleId}
+    </select>
+
+
+    <select id="getResourceListByRoleId" resultType="com.flame.mall.mbg.model.UmsResource">
+        select ur.* from ums_resource ur left join ums_role_resource_relation rrr on ur.id = rrr.resource_id  where rrr.role_id = #{roleId}
+    </select>
 </mapper>

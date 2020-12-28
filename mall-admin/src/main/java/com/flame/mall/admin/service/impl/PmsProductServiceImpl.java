@@ -264,6 +264,11 @@ public class PmsProductServiceImpl implements PmsProductService {
         if(CollUtil.isNotEmpty(insertSkuList)){
             relateAndInsertList(skuStockDao, insertSkuList, id);
         }
+        String test= "123213";
+        String test1="12312";
+        if (test!=test1) {
+
+        }
         // 删除sku
         if(CollUtil.isNotEmpty(removeSkuList)){
             List<Long> removeSkuIds = removeSkuList.stream().map(PmsSkuStock::getId).collect(Collectors.toList());
