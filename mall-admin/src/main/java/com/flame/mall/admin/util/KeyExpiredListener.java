@@ -1,7 +1,9 @@
 package com.flame.mall.admin.util;
 
+import com.flame.mall.admin.service.OmsOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
@@ -21,6 +23,9 @@ import java.nio.charset.StandardCharsets;
  */
 public class KeyExpiredListener extends KeyExpirationEventMessageListener {
 
+    @Autowired
+    private OmsOrderService omsOrderService;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(KeyExpiredListener.class);
 
     public KeyExpiredListener(RedisMessageListenerContainer listenerContainer) {
@@ -33,6 +38,7 @@ public class KeyExpiredListener extends KeyExpirationEventMessageListener {
         //过期的key
         String key = new String(message.getBody(), StandardCharsets.UTF_8);
         LOGGER.info("redis key 过期：pattern={},channel={},key={}", new String(pattern), channel, key);
+        omsOrderService.closeOrder(key);
     }
 
 }

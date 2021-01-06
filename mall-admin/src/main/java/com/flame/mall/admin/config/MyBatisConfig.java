@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.flame.mall.mbg.mapper","com.flame.mall.admin.dao"})
+@MapperScan({"com.flame.mall.mbg.mapper", "com.flame.mall.admin.dao"})
 public class MyBatisConfig {
 }

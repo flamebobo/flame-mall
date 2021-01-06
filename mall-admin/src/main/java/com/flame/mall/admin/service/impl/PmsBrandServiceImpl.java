@@ -85,7 +85,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     @Override
     public CommonResult deleteBrand(Long id) {
         long count = brandMapper.deleteByPrimaryKey(id);
-        if (count == 1) {
+        if (count==1) {
             return CommonResult.success(1);
         } else {
             return CommonResult.failed();

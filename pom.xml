@@ -106,18 +106,18 @@
                 <artifactId>mall-common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
-<!--            &lt;!&ndash;mall中MBG生成模块&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>com.flame.mall</groupId>-->
-<!--                <artifactId>mall-mbg</artifactId>-->
-<!--                <version>${mall-mbg.version}</version>-->
-<!--            </dependency>-->
-<!--            &lt;!&ndash;mall安全模块&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>com.flame.mall</groupId>-->
-<!--                <artifactId>mall-security</artifactId>-->
-<!--                <version>${mall-security.version}</version>-->
-<!--            </dependency>-->
+            <!--            &lt;!&ndash;mall中MBG生成模块&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.flame.mall</groupId>-->
+            <!--                <artifactId>mall-mbg</artifactId>-->
+            <!--                <version>${mall-mbg.version}</version>-->
+            <!--            </dependency>-->
+            <!--            &lt;!&ndash;mall安全模块&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.flame.mall</groupId>-->
+            <!--                <artifactId>mall-security</artifactId>-->
+            <!--                <version>${mall-security.version}</version>-->
+            <!--            </dependency>-->
             <!--MyBatis分页插件starter-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>

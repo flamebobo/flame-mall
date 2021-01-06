@@ -21,6 +21,7 @@ public interface UmsMemberLevelService {
 
     /**
      * 获取所有会员登录
+     *
      * @param defaultStatus 是否为默认会员
      */
     List<UmsMemberLevel> list(Integer defaultStatus);

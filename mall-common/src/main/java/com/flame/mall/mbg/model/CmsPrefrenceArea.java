@@ -1,6 +1,7 @@
 package com.flame.mall.mbg.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 public class CmsPrefrenceArea implements Serializable {

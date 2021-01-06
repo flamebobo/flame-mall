@@ -18,10 +18,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
+        <!--        </dependency>-->
         <!--mall通用模块-->
         <!--MyBatis分页插件starter-->
         <dependency>
@@ -37,10 +37,10 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.aliyun.oss</groupId>-->
-<!--            <artifactId>aliyun-sdk-oss</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.aliyun.oss</groupId>-->
+        <!--            <artifactId>aliyun-sdk-oss</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.aliyun.oss</groupId>

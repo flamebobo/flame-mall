@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.PmsProductCategory;
 import com.flame.mall.mbg.model.PmsProductCategoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductCategoryMapper {

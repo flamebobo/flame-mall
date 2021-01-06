@@ -15,60 +15,60 @@
         where ar.admin_id = #{adminId}
     </select>
     <select id="getRolePermissionList" resultMap="com.flame.mall.mbg.mapper.UmsPermissionMapper.BaseResultMap">
-       select p.* from ums_permission p
-       left join ums_role_permission_relation rpr on p.id = rpr.permission_id
-       left join ums_admin_role_relation arr on rpr.role_id = arr.role_id
-       where arr.admin_id = #{adminId} and p.id is not null
+        select p.* from ums_permission p
+        left join ums_role_permission_relation rpr on p.id = rpr.permission_id
+        left join ums_admin_role_relation arr on rpr.role_id = arr.role_id
+        where arr.admin_id = #{adminId} and p.id is not null
     </select>
     <select id="getPermissionList" resultMap="com.flame.mall.mbg.mapper.UmsPermissionMapper.BaseResultMap">
         SELECT
-            p.*
+        p.*
         FROM
-            ums_admin_role_relation ar
-            LEFT JOIN ums_role r ON ar.role_id = r.id
-            LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
-            LEFT JOIN ums_permission p ON rp.permission_id = p.id
+        ums_admin_role_relation ar
+        LEFT JOIN ums_role r ON ar.role_id = r.id
+        LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
+        LEFT JOIN ums_permission p ON rp.permission_id = p.id
         WHERE
-            ar.admin_id = #{adminId}
-            AND p.id IS NOT NULL
-            AND p.id NOT IN (
-                SELECT
-                    p.id
-                FROM
-                    ums_admin_permission_relation pr
-                    LEFT JOIN ums_permission p ON pr.permission_id = p.id
-                WHERE
-                    pr.type = - 1
-                    AND pr.admin_id = #{adminId}
-            )
+        ar.admin_id = #{adminId}
+        AND p.id IS NOT NULL
+        AND p.id NOT IN (
+        SELECT
+        p.id
+        FROM
+        ums_admin_permission_relation pr
+        LEFT JOIN ums_permission p ON pr.permission_id = p.id
+        WHERE
+        pr.type = - 1
+        AND pr.admin_id = #{adminId}
+        )
         UNION
         SELECT
-            p.*
+        p.*
         FROM
-            ums_admin_permission_relation pr
-            LEFT JOIN ums_permission p ON pr.permission_id = p.id
+        ums_admin_permission_relation pr
+        LEFT JOIN ums_permission p ON pr.permission_id = p.id
         WHERE
-            pr.type = 1
-            AND pr.admin_id = #{adminId}
+        pr.type = 1
+        AND pr.admin_id = #{adminId}
     </select>
     <select id="getResourceList" resultType="com.flame.mall.mbg.model.UmsResource">
         SELECT
-            ur.id id,
-            ur.create_time createTime,
-            ur.`name` `name`,
-            ur.url url,
-            ur.description description,
-            ur.category_id categoryId
+        ur.id id,
+        ur.create_time createTime,
+        ur.`name` `name`,
+        ur.url url,
+        ur.description description,
+        ur.category_id categoryId
         FROM
-            ums_admin_role_relation ar
+        ums_admin_role_relation ar
         LEFT JOIN ums_role r ON ar.role_id = r.id
         LEFT JOIN ums_role_resource_relation rrr ON r.id = rrr.role_id
         LEFT JOIN ums_resource ur ON ur.id = rrr.resource_id
         WHERE
-            ar.admin_id = #{adminId}
+        ar.admin_id = #{adminId}
         AND ur.id IS NOT NULL
         GROUP BY
-            ur.id
+        ur.id
     </select>
 
 </mapper>

@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableDiscoveryClient
 @SpringBootApplication
 //@MapperScan(value = "com.flame.mall")
-@NacosPropertySource(dataId = "admin.yaml" ,autoRefreshed = true)
+@NacosPropertySource(dataId = "admin.yaml", autoRefreshed = true)
 @ComponentScan(value = "com.flame.mall")
 public class MallAdminApplication {
     public static void main(String[] args) {

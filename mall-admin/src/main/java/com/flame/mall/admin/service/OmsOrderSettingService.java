@@ -1,6 +1,7 @@
 package com.flame.mall.admin.service;
 
 import com.flame.mall.mbg.model.OmsOrderSetting;
+import com.flame.mall.util.CommonResult;
 
 /**
  * <p>Title: 订单设置Service</p>
@@ -23,5 +24,5 @@ public interface OmsOrderSettingService {
     /**
      * 修改指定订单设置
      */
-    int update(Long id, OmsOrderSetting orderSetting);
+    CommonResult update(Long id, OmsOrderSetting orderSetting);
 }

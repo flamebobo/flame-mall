@@ -60,7 +60,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable("id") Long id,
-                               @Validated @RequestBody PmsBrandParam pmsBrandParam){
+                               @Validated @RequestBody PmsBrandParam pmsBrandParam) {
         return brandService.updateBrand(id, pmsBrandParam);
     }
 

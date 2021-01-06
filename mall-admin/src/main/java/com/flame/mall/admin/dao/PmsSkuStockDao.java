@@ -27,5 +27,5 @@ public interface PmsSkuStockDao {
     /**
      * 批量插入或替换操作
      */
-    int replaceList(@Param("list")List<PmsSkuStock> skuStockList);
+    int replaceList(@Param("list") List<PmsSkuStock> skuStockList);
 }

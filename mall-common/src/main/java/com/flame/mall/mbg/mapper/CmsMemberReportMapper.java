@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.CmsMemberReport;
 import com.flame.mall.mbg.model.CmsMemberReportExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsMemberReportMapper {

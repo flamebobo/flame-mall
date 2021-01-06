@@ -121,8 +121,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             token = jwtTokenUtil.generateToken(userDetails);
-            if (token == null) {
-               return CommonResult.validateFailed("用户名或密码错误");
+            if (token==null) {
+                return CommonResult.validateFailed("用户名或密码错误");
             }
             tokenMap.put("token", token);
             tokenMap.put("tokenHead", tokenHead);
@@ -165,7 +165,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         }
         if (umsAdmin.getPassword().equals(admin.getPassword())) {
             admin.setPassword(null);
-        }else{
+        } else {
             admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         }
         return umsAdminMapper.updateByPrimaryKeySelective(admin);
@@ -191,7 +191,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         // 建立新的关系
         if (!CollUtil.isEmpty(roleIds)) {
             List<UmsAdminRoleRelation> list = new ArrayList<>();
-            roleIds.forEach(it ->{
+            roleIds.forEach(it -> {
                 UmsAdminRoleRelation roleRelation = new UmsAdminRoleRelation();
                 roleRelation.setAdminId(adminId);
                 roleRelation.setRoleId(it);
@@ -264,16 +264,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public UserDetails loadUserByUsername(String username) {
         //获取用户信息
         UmsAdmin admin = getAdminByUsername(username);
-        if (admin != null) {
+        if (admin!=null) {
             List<UmsResource> resourceList = getResourceList(admin.getId());
-            return new AdminUserDetails(admin,resourceList);
+            return new AdminUserDetails(admin, resourceList);
         }
         throw new UsernameNotFoundException("用户名或密码错误");
     }
 
     @Override
     public CommonResult getAdminInfo(Principal principal) {
-        if(principal==null){
+        if (principal==null) {
             return CommonResult.unauthorized(null);
         }
         String username = principal.getName();
@@ -289,7 +289,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     /**
      * 将+-权限关系转化为对象
      */
-    private List<UmsAdminPermissionRelation> convert(Long adminId,Integer type,List<Long> permissionIdList) {
+    private List<UmsAdminPermissionRelation> convert(Long adminId, Integer type, List<Long> permissionIdList) {
         List<UmsAdminPermissionRelation> relationList = permissionIdList.stream().map(permissionId -> {
             UmsAdminPermissionRelation relation = new UmsAdminPermissionRelation();
             relation.setAdminId(adminId);

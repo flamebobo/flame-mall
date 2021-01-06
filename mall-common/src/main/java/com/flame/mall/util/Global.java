@@ -21,6 +21,8 @@ public class Global {
      */
     public class ExpireKey {
         public final static String EXPIRED_KEY_EVENT_START_UUID = "EXPIRED_KEY_EVENT_START_UUID_";
+        public final static String EXPIRED_KEY_ORDER_SPIKE = "EXPIRED_KEY_ORDER_SPIKE_";
+        public final static String EXPIRED_KEY_ORDER_NORMAL = "EXPIRED_KEY_ORDER_NORMAL_";
     }
 
     /**

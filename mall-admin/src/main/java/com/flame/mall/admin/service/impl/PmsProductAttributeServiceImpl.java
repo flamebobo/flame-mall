@@ -87,16 +87,16 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
         example.createCriteria().andIdIn(ids);
         int count = productAttributeMapper.deleteByExample(example);
         //删除完成后修改数量
-        if(type==0){
-            if(pmsProductAttributeCategory.getAttributeCount()>=count){
-                pmsProductAttributeCategory.setAttributeCount(pmsProductAttributeCategory.getAttributeCount()-count);
-            }else{
+        if (type==0) {
+            if (pmsProductAttributeCategory.getAttributeCount() >= count) {
+                pmsProductAttributeCategory.setAttributeCount(pmsProductAttributeCategory.getAttributeCount() - count);
+            } else {
                 pmsProductAttributeCategory.setAttributeCount(0);
             }
-        }else if(type==1){
-            if(pmsProductAttributeCategory.getParamCount()>=count){
-                pmsProductAttributeCategory.setParamCount(pmsProductAttributeCategory.getParamCount()-count);
-            }else{
+        } else if (type==1) {
+            if (pmsProductAttributeCategory.getParamCount() >= count) {
+                pmsProductAttributeCategory.setParamCount(pmsProductAttributeCategory.getParamCount() - count);
+            } else {
                 pmsProductAttributeCategory.setParamCount(0);
             }
         }

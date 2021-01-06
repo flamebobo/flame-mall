@@ -15,6 +15,7 @@ import com.flame.mall.mbg.model.OmsOrderExample;
 import com.flame.mall.mbg.model.OmsOrderOperateHistory;
 import com.github.pagehelper.PageHelper;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,7 +81,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
             history.setCreateTime(new Date());
             history.setOperateMan("后台管理员");
             history.setOrderStatus(4);
-            history.setNote("订单关闭:"+note);
+            history.setNote("订单关闭:" + note);
             return history;
         }).collect(Collectors.toList());
         orderOperateHistoryDao.insertList(historyList);
@@ -156,8 +157,19 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         history.setCreateTime(new Date());
         history.setOperateMan("后台管理员");
         history.setOrderStatus(status);
-        history.setNote("修改备注信息："+note);
+        history.setNote("修改备注信息：" + note);
         orderOperateHistoryMapper.insert(history);
         return count;
+    }
+
+    /**
+     * 超时自动关闭订单
+     *
+     * @param key
+     */
+    @Override
+    public void closeOrder(String key) {
+        String orderNo = StringUtils.substringAfterLast(key, "_");
+        String type = StringUtils.substringBeforeLast(key, "_");
     }
 }

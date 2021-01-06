@@ -45,10 +45,6 @@ public class OmsOrderSettingController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody OmsOrderSetting orderSetting) {
-        int count = orderSettingService.update(id,orderSetting);
-        if(count>0){
-            return CommonResult.success(count);
-        }
-        return CommonResult.failed();
+        return orderSettingService.update(id, orderSetting);
     }
 }

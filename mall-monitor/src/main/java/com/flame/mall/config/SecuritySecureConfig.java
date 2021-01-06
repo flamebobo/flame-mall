@@ -50,5 +50,5 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
                         adminContextPath + "/instances",
                         adminContextPath + "/actuator/**"
                 );
-        }
+    }
 }

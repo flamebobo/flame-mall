@@ -17,7 +17,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @time: 2020/11/22 22:03
  */
 @EnableDiscoveryClient
-@NacosPropertySource(dataId = "portal.yaml" ,autoRefreshed = true)
+@NacosPropertySource(dataId = "portal.yaml", autoRefreshed = true)
 @SpringBootApplication(scanBasePackages = "com.flame.mall")
 public class MallPortalApplication {
 

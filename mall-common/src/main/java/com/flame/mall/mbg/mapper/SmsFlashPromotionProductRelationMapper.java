@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.SmsFlashPromotionProductRelation;
 import com.flame.mall.mbg.model.SmsFlashPromotionProductRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsFlashPromotionProductRelationMapper {

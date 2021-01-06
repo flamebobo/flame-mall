@@ -141,7 +141,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         example.createCriteria().andRoleIdEqualTo(roleId);
         roleMenuRelationMapper.deleteByExample(example);
         // 批量插入新关系
-        menuIds.forEach(it ->{
+        menuIds.forEach(it -> {
             UmsRoleMenuRelation relation = new UmsRoleMenuRelation();
             relation.setRoleId(roleId);
             relation.setMenuId(it);

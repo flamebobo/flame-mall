@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.CmsSubjectComment;
 import com.flame.mall.mbg.model.CmsSubjectCommentExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsSubjectCommentMapper {

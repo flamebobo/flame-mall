@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.UmsMemberMemberTagRelation;
 import com.flame.mall.mbg.model.UmsMemberMemberTagRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberMemberTagRelationMapper {
