@@ -6,6 +6,7 @@ import com.flame.mall.admin.dto.OmsOrderDetail;
 import com.flame.mall.admin.dto.OmsOrderQueryParam;
 import com.flame.mall.admin.dto.OmsReceiverInfoParam;
 import com.flame.mall.mbg.model.OmsOrder;
+import com.flame.mall.util.CommonResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -70,4 +71,12 @@ public interface OmsOrderService {
     int updateNote(Long id, String note, Integer status);
 
     void closeOrder(String key);
+
+
+    /**
+     * 获取指定订单详情
+     * @return
+     */
+    CommonResult<OmsOrderDetail> detail(String orderSn);
+
 }

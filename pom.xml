@@ -15,6 +15,7 @@
         <module>mall-gateway</module>
         <module>mall-monitor</module>
         <module>mall-portal</module>
+        <module>mall-pay</module>
     </modules>
 
     <parent>

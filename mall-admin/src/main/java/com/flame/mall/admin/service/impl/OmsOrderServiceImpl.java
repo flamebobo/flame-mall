@@ -13,10 +13,10 @@ import com.flame.mall.mbg.mapper.OmsOrderOperateHistoryMapper;
 import com.flame.mall.mbg.model.OmsOrder;
 import com.flame.mall.mbg.model.OmsOrderExample;
 import com.flame.mall.mbg.model.OmsOrderOperateHistory;
+import com.flame.mall.util.CommonResult;
 import com.github.pagehelper.PageHelper;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -171,5 +171,11 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     public void closeOrder(String key) {
         String orderNo = StringUtils.substringAfterLast(key, "_");
         String type = StringUtils.substringBeforeLast(key, "_");
+    }
+
+    @Override
+    public CommonResult<OmsOrderDetail> detail(String orderSn) {
+        OmsOrderDetail detail = orderDao.getDetailByOrderSn(orderSn);
+        return CommonResult.success(detail);
     }
 }

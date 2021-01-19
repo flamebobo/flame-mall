@@ -49,7 +49,7 @@ import java.util.Map;
 @Slf4j
 public class WebLogAspect {
 
-    @Pointcut("execution(public * com.flame.mall.admin.controller.*.*(..))")
+    @Pointcut("execution(public * com.flame.mall.*.controller.*.*(..))")
     public void webLog() {
 
     }
