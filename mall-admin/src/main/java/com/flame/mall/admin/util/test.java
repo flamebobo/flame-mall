@@ -1,6 +1,6 @@
 package com.flame.mall.admin.util;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * <p>Title:</p>

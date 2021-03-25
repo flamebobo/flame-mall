@@ -1,6 +1,5 @@
 package com.flame.mall.portal;
 
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,7 +16,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @time: 2020/11/22 22:03
  */
 @EnableDiscoveryClient
-@NacosPropertySource(dataId = "portal.yaml", autoRefreshed = true)
 @SpringBootApplication(scanBasePackages = "com.flame.mall")
 public class MallPortalApplication {
 

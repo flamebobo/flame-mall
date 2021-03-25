@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        namespace: dev
+        server-addr: 106.52.36.53:8848
+      config:
+        file-extension: yml #指定配置文件类型为yaml文件
+        server-addr: 106.52.36.53:8848
+        namespace: dev

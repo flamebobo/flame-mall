@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 商品优选Service实现类
- *
+ * 商品优选Service实现类 *
  * <p>Title:</p>
  * <p>Description:</p>
  * <p>Copyright: Copyright (c) 2020</p>

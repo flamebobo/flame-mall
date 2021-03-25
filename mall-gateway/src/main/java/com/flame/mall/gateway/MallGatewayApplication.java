@@ -1,6 +1,5 @@
 package com.flame.mall.gateway;
 
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,7 +17,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-//@NacosPropertySource(dataId = "gateway.yaml", autoRefreshed = true)
+//@NacosPropertySource(dataId = "gateway", autoRefreshed = true)
 public class MallGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(MallGatewayApplication.class, args);

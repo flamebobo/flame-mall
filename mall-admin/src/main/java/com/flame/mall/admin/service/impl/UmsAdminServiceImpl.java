@@ -3,7 +3,7 @@ package com.flame.mall.admin.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.nacos.api.config.annotation.NacosValue;
+import org.springframework.beans.factory.annotation.Value;
 import com.flame.mall.admin.bo.AdminUserDetails;
 import com.flame.mall.admin.dao.UmsAdminPermissionRelationDao;
 import com.flame.mall.admin.dao.UmsAdminRoleRelationDao;
@@ -69,7 +69,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private final UmsAdminMapper umsAdminMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenUtil jwtTokenUtil;
-    @NacosValue("${jwt.tokenHead}")
+    @Value("${jwt.tokenHead}")
     private String tokenHead;
     private final UserDetailsService userDetailsService;
     private final UmsAdminRoleRelationDao adminRoleRelationDao;

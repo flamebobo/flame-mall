@@ -1,14 +1,9 @@
 package com.flame.mall.admin;
 
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * <p>Title:</p>
@@ -23,8 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-//@MapperScan(value = "com.flame.mall")
-@NacosPropertySource(dataId = "admin.yaml", autoRefreshed = true)
 @ComponentScan(value = "com.flame.mall")
 public class MallAdminApplication {
     public static void main(String[] args) {
