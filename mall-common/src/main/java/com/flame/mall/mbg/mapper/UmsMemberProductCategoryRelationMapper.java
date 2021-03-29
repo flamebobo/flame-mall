@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.UmsMemberProductCategoryRelation;
 import com.flame.mall.mbg.model.UmsMemberProductCategoryRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberProductCategoryRelationMapper {

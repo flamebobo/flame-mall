@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.UmsIntegrationConsumeSetting;
 import com.flame.mall.mbg.model.UmsIntegrationConsumeSettingExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsIntegrationConsumeSettingMapper {

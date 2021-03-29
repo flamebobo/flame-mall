@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.UmsRoleMenuRelation;
 import com.flame.mall.mbg.model.UmsRoleMenuRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsRoleMenuRelationMapper {

@@ -1,6 +1,7 @@
 package com.flame.mall.admin.dao;
 
 import com.flame.mall.mbg.model.UmsMenu;
+import com.flame.mall.mbg.model.UmsResource;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,5 +18,10 @@ import java.util.List;
  * @time: 2020/12/3 17:15
  */
 public interface UmsRoleDao {
+
     List<UmsMenu> getMenuList(@Param("adminId") Long adminId);
+
+    List<UmsMenu> getMenuListByRoleId(@Param("roleId") Long roleId);
+
+    List<UmsResource> getResourceListByRoleId(@Param("roleId") Long roleId);
 }

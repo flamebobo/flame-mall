@@ -48,7 +48,7 @@ public class SmsFlashPromotionSessionExample {
 
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
-        if (oredCriteria.size() == 0) {
+        if (oredCriteria.size()==0) {
             oredCriteria.add(criteria);
         }
         return criteria;
@@ -86,35 +86,35 @@ public class SmsFlashPromotionSessionExample {
         }
 
         protected void addCriterion(String condition) {
-            if (condition == null) {
+            if (condition==null) {
                 throw new RuntimeException("Value for condition cannot be null");
             }
             criteria.add(new Criterion(condition));
         }
 
         protected void addCriterion(String condition, Object value, String property) {
-            if (value == null) {
+            if (value==null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value));
         }
 
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
-            if (value1 == null || value2 == null) {
+            if (value1==null || value2==null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
 
         protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
+            if (value==null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
             addCriterion(condition, new java.sql.Time(value.getTime()), property);
         }
 
         protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
+            if (values==null || values.size()==0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
             List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
@@ -126,7 +126,7 @@ public class SmsFlashPromotionSessionExample {
         }
 
         protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
+            if (value1==null || value2==null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);

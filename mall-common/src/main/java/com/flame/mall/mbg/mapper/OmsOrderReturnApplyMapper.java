@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.OmsOrderReturnApply;
 import com.flame.mall.mbg.model.OmsOrderReturnApplyExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderReturnApplyMapper {

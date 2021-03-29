@@ -47,9 +47,9 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
     @Override
     public CommonResult update(Long pid, List<PmsSkuStock> skuStockList) {
         int count = skuStockDao.replaceList(skuStockList);
-        if(count>0){
+        if (count > 0) {
             return CommonResult.success(count);
-        }else{
+        } else {
             return CommonResult.failed();
         }
     }

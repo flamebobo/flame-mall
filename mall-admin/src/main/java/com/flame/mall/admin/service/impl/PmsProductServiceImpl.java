@@ -83,16 +83,17 @@ public class PmsProductServiceImpl implements PmsProductService {
     private final CmsSubjectProductRelationMapper subjectProductRelationMapper;
     private final PmsProductAttributeValueMapper productAttributeValueMapper;
     private final PmsProductVertifyRecordDao productVertifyRecordDao;
+
     @Override
     public List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         PmsProductExample pmsProductExample = new PmsProductExample();
         PmsProductExample.Criteria criteria = pmsProductExample.createCriteria();
         criteria.andDeleteStatusEqualTo(0);
-        if (productQueryParam.getPublishStatus() != null) {
+        if (productQueryParam.getPublishStatus()!=null) {
             criteria.andPublishStatusEqualTo(productQueryParam.getPublishStatus());
         }
-        if (productQueryParam.getVerifyStatus() != null) {
+        if (productQueryParam.getVerifyStatus()!=null) {
             criteria.andVerifyStatusEqualTo(productQueryParam.getVerifyStatus());
         }
         if (!StringUtils.isEmpty(productQueryParam.getKeyword())) {
@@ -101,10 +102,10 @@ public class PmsProductServiceImpl implements PmsProductService {
         if (!StringUtils.isEmpty(productQueryParam.getProductSn())) {
             criteria.andProductSnEqualTo(productQueryParam.getProductSn());
         }
-        if (productQueryParam.getBrandId() != null) {
+        if (productQueryParam.getBrandId()!=null) {
             criteria.andBrandIdEqualTo(productQueryParam.getBrandId());
         }
-        if (productQueryParam.getProductCategoryId() != null) {
+        if (productQueryParam.getProductCategoryId()!=null) {
             criteria.andProductCategoryIdEqualTo(productQueryParam.getProductCategoryId());
         }
 
@@ -127,7 +128,7 @@ public class PmsProductServiceImpl implements PmsProductService {
             // 满减价格
             relateAndInsertList(productFullReductionDao, productParam.getProductFullReductionList(), productId);
             // 处理sku的编码
-            handleSkuStockCode(productParam.getSkuStockList(),productId);
+            handleSkuStockCode(productParam.getSkuStockList(), productId);
             // 添加sku库存信息
             relateAndInsertList(skuStockDao, productParam.getSkuStockList(), productId);
             // 添加商品参数,添加自定义商品规格
@@ -137,7 +138,7 @@ public class PmsProductServiceImpl implements PmsProductService {
             // 关联优选
             relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
             return CommonResult.success(1);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("新增商品报错:{}", e.getMessage());
             return CommonResult.failed();
         }
@@ -145,7 +146,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     }
 
     private void handleSkuStockCode(List<PmsSkuStock> skuStockList, Long productId) {
-        if(CollectionUtils.isEmpty(skuStockList)) {
+        if (CollectionUtils.isEmpty(skuStockList)) {
             return;
         }
         for (int i = 0; i < skuStockList.size(); i++) {
@@ -191,7 +192,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public CommonResult update(Long id, PmsProductParam productParam) {
-        try{
+        try {
             // 更新商品信息
             productParam.setId(id);
             pmsProductMapper.updateByPrimaryKeySelective(productParam);
@@ -228,7 +229,7 @@ public class PmsProductServiceImpl implements PmsProductService {
             prefrenceAreaProductRelationMapper.deleteByExample(prefrenceAreaExample);
             relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);
             return CommonResult.success(1);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("编辑商品报错:{}", e.getMessage());
             return CommonResult.failed();
         }
@@ -241,7 +242,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         // 当前的sku信息
         List<PmsSkuStock> currSkuList = productParam.getSkuStockList();
         // 当前没有sku直接删除
-        if(CollUtil.isEmpty(currSkuList)){
+        if (CollUtil.isEmpty(currSkuList)) {
             PmsSkuStockExample skuStockExample = new PmsSkuStockExample();
             skuStockExample.createCriteria().andProductIdEqualTo(id);
             skuStockMapper.deleteByExample(skuStockExample);
@@ -257,22 +258,27 @@ public class PmsProductServiceImpl implements PmsProductService {
         List<PmsSkuStock> updateSkuList = currSkuList.stream().filter(item -> item.getId()!=null).collect(Collectors.toList());
         List<Long> updateSkuIds = updateSkuList.stream().map(PmsSkuStock::getId).collect(Collectors.toList());
         // 获取需要删除的sku信息
-        List<PmsSkuStock> removeSkuList = oriStuList.stream().filter(item-> !updateSkuIds.contains(item.getId())).collect(Collectors.toList());
-        handleSkuStockCode(insertSkuList,id);
-        handleSkuStockCode(updateSkuList,id);
+        List<PmsSkuStock> removeSkuList = oriStuList.stream().filter(item -> !updateSkuIds.contains(item.getId())).collect(Collectors.toList());
+        handleSkuStockCode(insertSkuList, id);
+        handleSkuStockCode(updateSkuList, id);
         // 新增sku
-        if(CollUtil.isNotEmpty(insertSkuList)){
+        if (CollUtil.isNotEmpty(insertSkuList)) {
             relateAndInsertList(skuStockDao, insertSkuList, id);
         }
+        String test = "123213";
+        String test1 = "12312";
+        if (test!=test1) {
+
+        }
         // 删除sku
-        if(CollUtil.isNotEmpty(removeSkuList)){
+        if (CollUtil.isNotEmpty(removeSkuList)) {
             List<Long> removeSkuIds = removeSkuList.stream().map(PmsSkuStock::getId).collect(Collectors.toList());
             PmsSkuStockExample removeExample = new PmsSkuStockExample();
             removeExample.createCriteria().andIdIn(removeSkuIds);
             skuStockMapper.deleteByExample(removeExample);
         }
         // 修改sku
-        if(CollUtil.isNotEmpty(updateSkuList)){
+        if (CollUtil.isNotEmpty(updateSkuList)) {
             updateSkuList.forEach(skuStockMapper::updateByPrimaryKeySelective);
         }
     }
@@ -324,7 +330,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         record.setRecommandStatus(recommendStatus);
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andIdIn(ids);
-        int count =  pmsProductMapper.updateByExampleSelective(record, example);
+        int count = pmsProductMapper.updateByExampleSelective(record, example);
         if (count > 0) {
             return CommonResult.success(count);
         } else {
@@ -352,7 +358,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         record.setDeleteStatus(deleteStatus);
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andIdIn(ids);
-        int count =  pmsProductMapper.updateByExampleSelective(record, example);
+        int count = pmsProductMapper.updateByExampleSelective(record, example);
         if (count > 0) {
             return CommonResult.success(count);
         } else {
@@ -365,7 +371,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         PmsProductExample productExample = new PmsProductExample();
         PmsProductExample.Criteria criteria = productExample.createCriteria();
         criteria.andDeleteStatusEqualTo(0);
-        if(!StringUtils.isEmpty(keyword)){
+        if (!StringUtils.isEmpty(keyword)) {
             criteria.andNameLike("%" + keyword + "%");
             productExample.or().andDeleteStatusEqualTo(0).andProductSnLike("%" + keyword + "%");
         }

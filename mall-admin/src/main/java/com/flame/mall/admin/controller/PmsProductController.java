@@ -48,7 +48,7 @@ public class PmsProductController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public CommonResult<CommonPage<PmsProduct>> getList(PmsProductQueryParam pmsProductQueryParam,
                                                         @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
-                                                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
+                                                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<PmsProduct> pmsProducts = pmsProductService.list(pmsProductQueryParam, pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(pmsProducts));
     }
@@ -57,7 +57,7 @@ public class PmsProductController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody PmsProductParam productParam) {
-        return  pmsProductService.create(productParam);
+        return pmsProductService.create(productParam);
 
     }
 

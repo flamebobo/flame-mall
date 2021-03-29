@@ -46,7 +46,7 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        if (configAttributeMap == null) {
+        if (configAttributeMap==null) {
             this.loadDataSource();
         }
         List<ConfigAttribute> configAttributes = new ArrayList<>();

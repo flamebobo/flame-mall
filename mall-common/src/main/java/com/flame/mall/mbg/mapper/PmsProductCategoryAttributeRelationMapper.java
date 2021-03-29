@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.PmsProductCategoryAttributeRelation;
 import com.flame.mall.mbg.model.PmsProductCategoryAttributeRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductCategoryAttributeRelationMapper {

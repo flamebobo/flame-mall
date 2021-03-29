@@ -2,7 +2,9 @@ package com.flame.mall.mbg.mapper;
 
 import com.flame.mall.mbg.model.SmsCouponProductCategoryRelation;
 import com.flame.mall.mbg.model.SmsCouponProductCategoryRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsCouponProductCategoryRelationMapper {

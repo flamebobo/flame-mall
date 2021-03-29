@@ -38,6 +38,7 @@ public interface UmsAdminService {
 
     /**
      * 登录功能
+     *
      * @param username 用户名
      * @param password 密码
      * @return 生成的JWT的token
@@ -46,6 +47,7 @@ public interface UmsAdminService {
 
     /**
      * 刷新token的功能
+     *
      * @param oldToken 旧的token
      */
     String refreshToken(String oldToken);
@@ -97,6 +99,7 @@ public interface UmsAdminService {
 
     /**
      * 修改密码
+     *
      * @return
      */
     CommonResult updatePassword(UpdateAdminPasswordParam updatePasswordParam);

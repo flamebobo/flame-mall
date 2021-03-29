@@ -76,7 +76,7 @@ public class UmsAdminController {
     @ResponseBody
     public CommonResult<UmsAdmin> register(@RequestBody UmsAdminParam umsAdminParam) {
         UmsAdmin umsAdmin = adminService.register(umsAdminParam);
-        if (umsAdmin == null) {
+        if (umsAdmin==null) {
             return CommonResult.failed();
         }
         return CommonResult.success(umsAdmin);
@@ -88,7 +88,7 @@ public class UmsAdminController {
     public CommonResult refreshToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String refreshToken = adminService.refreshToken(token);
-        if (refreshToken == null) {
+        if (refreshToken==null) {
             return CommonResult.failed("token已经过期！");
         }
         Map<String, String> tokenMap = new HashMap<>();
@@ -141,7 +141,6 @@ public class UmsAdminController {
     }
 
 
-
     @ApiOperation("删除指定用户信息")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
@@ -156,10 +155,10 @@ public class UmsAdminController {
     @ApiOperation("修改帐号状态")
     @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updateStatus(@PathVariable Long id,@RequestParam(value = "status") Integer status) {
+    public CommonResult updateStatus(@PathVariable Long id, @RequestParam(value = "status") Integer status) {
         UmsAdmin umsAdmin = new UmsAdmin();
         umsAdmin.setStatus(status);
-        int count = adminService.update(id,umsAdmin);
+        int count = adminService.update(id, umsAdmin);
         if (count > 0) {
             return CommonResult.success(count);
         }

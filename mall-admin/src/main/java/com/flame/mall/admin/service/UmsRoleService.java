@@ -4,6 +4,7 @@ import com.flame.mall.mbg.model.UmsMenu;
 import com.flame.mall.mbg.model.UmsPermission;
 import com.flame.mall.mbg.model.UmsResource;
 import com.flame.mall.mbg.model.UmsRole;
+import com.flame.mall.util.CommonResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface UmsRoleService {
     /**
      * 添加角色
      */
-    int create(UmsRole role);
+    CommonResult create(UmsRole role);
 
     /**
      * 修改角色信息
@@ -43,8 +44,7 @@ public interface UmsRoleService {
     /**
      * 修改指定角色的权限
      */
-    @Transactional
-    int updatePermission(Long roleId, List<Long> permissionIds);
+    CommonResult updatePermission(Long roleId, List<Long> permissionIds);
 
     /**
      * 获取所有角色列表
